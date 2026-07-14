@@ -453,6 +453,25 @@ section.present .strikenew{animation:strikeNewIn .55s ease 1.15s forwards}
 .v3-pillars .problemgrid.four{margin-top:1.5em}
 .v3-pillars .problemgrid.four .pdesc{font-size:.46em}
 .v3-how .stepgrid{margin-top:1.1em}
+
+/* photo collage */
+.collgrid{flex:1;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:.55em;margin-top:.7em;min-height:0}
+.collcell{position:relative;border:1px solid rgba(255,255,255,.12);border-radius:14px;background:rgba(255,255,255,.035);overflow:hidden;
+  box-shadow:0 1em 2em rgba(0,0,0,.32);opacity:0;transform:translateY(18px) scale(.985)}
+.collcell.wide{grid-column:span 2}
+.collcell img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 8s ease}
+.collcell::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,10,26,0) 55%,rgba(6,10,26,.35) 100%);pointer-events:none}
+section.present .collgrid .collcell{animation:pcardIn .6s cubic-bezier(.2,.7,.3,1) forwards}
+section.present .collgrid .collcell:nth-child(1){animation-delay:.08s}
+section.present .collgrid .collcell:nth-child(2){animation-delay:.18s}
+section.present .collgrid .collcell:nth-child(3){animation-delay:.28s}
+section.present .collgrid .collcell:nth-child(4){animation-delay:.38s}
+section.present .collgrid .collcell:nth-child(5){animation-delay:.48s}
+section.present .collgrid .collcell:nth-child(6){animation-delay:.58s}
+section.present .collgrid .collcell img{transform:scale(1.06)}
+.v3-collage{position:absolute;inset:0;display:flex;flex-direction:column;padding:4.5% 5.5% 7%;z-index:3;box-sizing:border-box}
+.v3-collage .kick{margin-bottom:.35em}
+.v3-collage h1{font-size:1.55em;margin:0}
 /* reveal chrome */
 .reveal .controls{color:#8eb0ff!important}
 .reveal .progress span{background:linear-gradient(90deg,#183ef6,#8eb0ff)!important}
@@ -564,7 +583,25 @@ section.present .strikenew{animation:strikeNewIn .55s ease 1.15s forwards}
   <div class="pageft">Bright.Blue · Retail Media for Agencies</div>
 </section>
 
-<!-- ══════ 7 · WHAT WE DO ══════ -->
+<!-- ══════ 7 · NETWORK COLLAGE ══════ -->
+<section>
+  <div class="washdark"></div>
+  <div class="v3-collage">
+    <div class="kick">Our network</div>
+    <h1>Live across the estate.</h1>
+    <div class="collgrid">
+      <div class="collcell wide"><img src="assets/Final%20Assets/2.jpg" alt="Connected retail machine in venue"/></div>
+      <div class="collcell"><img src="assets/Final%20Assets/6.jpg" alt="Bright.Blue connected retail activation"/></div>
+      <div class="collcell"><img src="assets/Final%20Assets/7.jpg" alt="Connected retail screens"/></div>
+      <div class="collcell"><img src="assets/Final%20Assets/madfest_13.jpg" alt="Bright.Blue at MadFest"/></div>
+      <div class="collcell"><img src="assets/Final%20Assets/10.jpg" alt="Connected retail machine detail"/></div>
+      <div class="collcell wide"><img src="assets/Final%20Assets/madfest_15.jpg" alt="Bright.Blue MadFest activation"/></div>
+    </div>
+  </div>
+  <div class="pageft">Bright.Blue · Retail Media for Agencies</div>
+</section>
+
+<!-- ══════ 8 · WHAT WE DO ══════ -->
 <section class="v3-pillars">
   <div class="washdark"></div>
   <div class="wrap"><div class="col-text pad">
@@ -592,7 +629,7 @@ section.present .strikenew{animation:strikeNewIn .55s ease 1.15s forwards}
   <div class="pageft">Bright.Blue · Retail Media for Agencies</div>
 </section>
 
-<!-- ══════ 8 · CLOSED LOOP ══════ -->
+<!-- ══════ 9 · CLOSED LOOP ══════ -->
 <section class="v3-closed">
   <div class="washdark"></div>
   <div class="wrap"><div class="col-text pad">
@@ -612,7 +649,7 @@ section.present .strikenew{animation:strikeNewIn .55s ease 1.15s forwards}
   <div class="pageft">Bright.Blue · Retail Media for Agencies</div>
 </section>
 
-<!-- ══════ 9 · LIVE DATA ══════ -->
+<!-- ══════ 10 · LIVE DATA ══════ -->
 <section class="v3-live-wrap" data-live-report>
   <div class="washdark"></div>
   <div class="v3-live">
@@ -673,7 +710,7 @@ section.present .strikenew{animation:strikeNewIn .55s ease 1.15s forwards}
   <div class="pageft">Bright.Blue · Retail Media for Agencies</div>
 </section>
 
-<!-- ══════ 10 · HOW YOU USE IT ══════ -->
+<!-- ══════ 11 · HOW YOU USE IT ══════ -->
 <section class="v3-how">
   <div class="washdark"></div>
   <div class="wrap">
@@ -692,7 +729,7 @@ section.present .strikenew{animation:strikeNewIn .55s ease 1.15s forwards}
   <div class="pageft">Bright.Blue · Retail Media for Agencies</div>
 </section>
 
-<!-- ══════ 11 · SCALE ══════ -->
+<!-- ══════ 12 · SCALE ══════ -->
 <section class="v3-scale">
   <div class="washdark"></div>
   <div class="wrap">
@@ -723,7 +760,7 @@ section.present .strikenew{animation:strikeNewIn .55s ease 1.15s forwards}
   <div class="pageft">Bright.Blue · Retail Media for Agencies</div>
 </section>
 
-<!-- ══════ 12 · LIVE ON THE NETWORK ══════ -->
+<!-- ══════ 13 · LIVE ON THE NETWORK ══════ -->
 <section>
   <div class="washdark"></div>
   <div class="wrap">
@@ -761,7 +798,7 @@ section.present .strikenew{animation:strikeNewIn .55s ease 1.15s forwards}
   <div class="pageft">Bright.Blue · Retail Media for Agencies</div>
 </section>
 
-<!-- ══════ 13 · CLOSE ══════ -->
+<!-- ══════ 14 · CLOSE ══════ -->
 <section>
   <div class="washdark"></div>
   <img class="logo" src="assets/bb-logo-white.svg" alt="Bright.Blue"/>
