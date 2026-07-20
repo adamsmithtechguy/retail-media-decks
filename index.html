@@ -209,6 +209,18 @@ section.present .problemgrid .pcard:nth-child(2){animation-delay:.28s}
 section.present .problemgrid .pcard:nth-child(3){animation-delay:.46s}
 section.present .problemgrid .pcard:nth-child(4){animation-delay:.64s}
 .agency-accent{margin:1.35em 0 0;text-align:center;font-size:.62em;font-weight:700;line-height:1.45;color:#a9c2ff;max-width:92%}
+
+/* agency problem: click-to-reveal strike + replacement per card */
+.v3-agency .problemgrid{margin-top:1.5em}
+.v3-agency .pnum-reveal{min-height:1.55em}
+.v3-agency .pnum-old{position:relative;display:inline-block;transition:color .35s ease}
+.v3-agency .pnum-new{display:block;color:#7bf5b0!important;margin-top:.15em;line-height:1.1}
+.v3-agency .pnum-reveal:has(.pnum-new.visible) .pnum-old{color:rgba(255,255,255,.42)}
+.v3-agency .pnum-old::after{content:"";position:absolute;left:-.04em;right:-.04em;top:52%;height:.08em;
+  background:#ff3b3b;border-radius:2px;transform:scaleX(0);transform-origin:left center;box-shadow:0 0 10px rgba(255,59,59,.45);pointer-events:none}
+.v3-agency .pnum-reveal:has(.pnum-new.visible) .pnum-old::after{animation:agencyStrike .55s ease forwards}
+@keyframes agencyStrike{to{transform:scaleX(1)}}
+
 .problemgrid.four .plabel{margin:.55em 0 .4em}
 .problemgrid.four .pdesc{font-size:.44em;line-height:1.4}
 @keyframes pcardIn{to{opacity:1;transform:none}}
@@ -367,6 +379,15 @@ section.present .strikenew{animation:strikeNewIn .55s ease 1.15s forwards}
 .contact .cv{font-size:.6em;font-weight:600;color:var(--ink)}
 .contact .cv a{color:var(--ink);text-decoration:none}
 
+/* close slide */
+.v3-close .close-layout{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:center;padding:0 8% 7%;box-sizing:border-box}
+.v3-close .close-copy{display:flex;flex-direction:column;justify-content:center;min-width:0;max-width:52em}
+.v3-close .close-copy .kick{margin-bottom:.75em;color:#c7d2ff}
+.v3-close .close-copy h1{font-size:2.15em;max-width:12em;line-height:1.06;margin:0;letter-spacing:-.025em}
+.v3-close .close-copy h1 .accent{color:#a9c2ff}
+.v3-close .close-sub{font-size:.72em;line-height:1.5;color:rgba(255,255,255,.62);font-weight:500;margin:1em 0 0;max-width:22em}
+.v3-close .close-copy .contactname{margin-top:1.75em}
+
 
 /* opportunity statements */
 .oppstack{margin-top:1.6em;max-width:78%;display:flex;flex-direction:column;gap:1.35em}
@@ -418,18 +439,41 @@ section.present .agenda-rows .row:nth-child(4){animation-delay:.6s}
 @keyframes agendaIn{to{opacity:1;transform:none}}
 
 /* connected retail intro */
-.v3-cr .col-text{flex:0 0 48%;min-width:0;justify-content:center}
+.v3-cr .col-text{flex:0 0 48%;min-width:0;justify-content:flex-start}
+.v3-cr .col-text.pad{padding:4% 6% 4.5% 5.5%}
+.v3-cr .kick{margin-bottom:.7em}
 .v3-cr .col-img{flex:1;min-width:0}
 .v3-cr .photo.fade-l{inset:0}
 .v3-cr .fade-l::before,
 .v3-cr .photo.no-vfade.fade-l::before{inset:0;background:linear-gradient(90deg,var(--bg) 0%,rgba(7,10,26,.55) 4%,rgba(7,10,26,0) 18%)}
 .v3-cr .photo.cr-hero{background-image:url('assets/gym-group-connected.jpg');background-repeat:no-repeat;background-size:cover;background-position:center center}
-.cr-lead{font-size:.9em;line-height:1.45;color:rgba(255,255,255,.88);margin:1em 0 0;max-width:22em}
-.cr-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75em;margin-top:1.25em;max-width:100%}
-.cr-grid .pcard{padding:1em 1em 1.05em}
+.cr-lead{font-size:.9em;line-height:1.45;color:rgba(255,255,255,.88);margin:.55em 0 0;max-width:22em}
+.cr-grid{display:grid;grid-template-columns:1fr 1fr;gap:.55em;margin-top:.6em;max-width:100%}
+.cr-grid .pcard{padding:.85em .95em .9em}
 .cr-grid .pcard .pnum{font-size:1.05em}
-.cr-grid .pcard .plabel{margin:.65em 0 .35em}
+.cr-grid .pcard .plabel{margin:.45em 0 .28em}
 .cr-grid .pcard .pdesc{font-size:.42em;line-height:1.4}
+
+/* connected retail: nuts and bolts */
+.v3-nuts .col-text{flex:0 0 54%;min-width:0;justify-content:center}
+.v3-nuts .col-text.pad{padding:5.5% 5.5% 6.5% 6%;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.v3-nuts .col-img{flex:1;min-width:0}
+.v3-nuts .kick{margin-bottom:.65em}
+.v3-nuts h1{font-size:1.85em;max-width:13em;line-height:1.05;margin:0}
+.v3-nuts .one-line{font-size:.74em;line-height:1.45;color:rgba(255,255,255,.84);margin-top:.55em;max-width:24em}
+.v3-nuts .nuts-block{margin-top:1em}
+.v3-nuts .nuts-block + .nuts-block{margin-top:1.35em}
+.v3-nuts .nuts-label{font-size:.48em;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#a9c2ff;margin:0 0 .6em}
+.v3-nuts .nuts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.85em;align-items:stretch}
+.v3-nuts .nuts-grid.duo{grid-template-columns:1fr 1fr;gap:.85em}
+.v3-nuts .nuts-item{display:flex;flex-direction:column;justify-content:flex-start;height:100%;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);border-radius:14px;padding:1em 1.05em;min-height:0}
+.v3-nuts .nuts-item .nt{font-family:'Space Grotesk','Inter',sans-serif;font-size:.82em;font-weight:700;color:#fff;letter-spacing:-.02em;line-height:1.15;margin:0 0 .32em;min-height:2.35em}
+.v3-nuts .nuts-item .nd{font-size:.5em;color:rgba(255,255,255,.78);line-height:1.42;margin:0;flex:1}
+.v3-nuts .nuts-accent{margin-top:1.25em;font-size:.62em;font-weight:700;line-height:1.45;color:#7bf5b0;max-width:22em}
+.v3-nuts .photo.nuts-hero{background-image:url('assets/guest-sku-qr.png');background-repeat:no-repeat;background-size:cover;background-position:center center}
+.v3-nuts .photo.fade-l{inset:0}
+.v3-nuts .fade-l::before,
+.v3-nuts .photo.no-vfade.fade-l::before{inset:0;background:linear-gradient(90deg,var(--bg) 0%,rgba(7,10,26,.55) 6%,rgba(7,10,26,0) 24%)}
 
 /* experiential / events */
 .v3-events .events-layout{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;gap:1em;padding:4.5% 5% 7% 6%;box-sizing:border-box;min-height:0}
@@ -448,15 +492,29 @@ section.present .agenda-rows .row:nth-child(4){animation-delay:.6s}
 .v3-events .events-shot .shot-title{font-family:'Space Grotesk','Inter',sans-serif;font-size:.82em;font-weight:700;letter-spacing:-.02em;color:#fff;margin:0 0 .4em;line-height:1.15}
 .v3-events .events-shot .shot-desc{font-size:.52em;line-height:1.4;color:rgba(255,255,255,.78);margin:0}
 
-/* retail media intro */
-.v3-rm .rm-layout{position:absolute;inset:0;z-index:3;display:grid;grid-template-columns:1.1fr .9fr;gap:2.2em;padding:6% 6% 8% 6%;box-sizing:border-box;min-height:0}
-.v3-rm .rm-copy{display:flex;flex-direction:column;justify-content:center;min-width:0;gap:1.15em}
-.v3-rm .rm-copy .kick{margin-bottom:.15em}
-.v3-rm .rm-quote{font-family:'Space Grotesk','Inter',sans-serif;font-size:1em;font-weight:600;line-height:1.45;letter-spacing:-.015em;color:#fff;margin:0;max-width:16em}
-.v3-rm .rm-quote .hl{color:#a9c2ff}
-.v3-rm .rm-quote.sub{font-size:.82em;font-weight:500;line-height:1.5;color:rgba(255,255,255,.82);max-width:17em}
-.v3-rm .rm-video{position:relative;min-height:0;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);align-self:center;height:78%}
-.v3-rm .rm-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+/* retail media + gap (merged) */
+.v3-rm-gap .rm-gap-layout{position:absolute;inset:0;z-index:3;display:grid;grid-template-columns:1fr 1fr;gap:1.6em;padding:4.5% 5% 7.5% 6%;box-sizing:border-box;min-height:0}
+.v3-rm-gap .rm-gap-copy{display:flex;flex-direction:column;justify-content:center;min-width:0;gap:.6em}
+.v3-rm-gap .rm-gap-copy .kick{margin-bottom:0}
+.v3-rm-gap .rm-gap-copy h1{font-size:1.35em;margin:0;max-width:11em;line-height:1.08}
+.v3-rm-gap .rm-quote{font-family:'Space Grotesk','Inter',sans-serif;font-size:.88em;font-weight:600;line-height:1.4;letter-spacing:-.015em;color:#fff;margin:0;max-width:15em}
+.v3-rm-gap .rm-quote .hl{color:#a9c2ff}
+.v3-rm-gap .rm-quote.sub{font-size:.72em;font-weight:500;line-height:1.45;color:rgba(255,255,255,.82);max-width:16em}
+.v3-rm-gap .rm-gap-copy .one-line{font-size:.58em;margin-top:.1em;max-width:17em;color:rgba(255,255,255,.82);line-height:1.45}
+.v3-rm-gap .rm-gap-divider{height:1px;background:rgba(255,255,255,.12);margin:.4em 0 .25em;max-width:14em}
+.v3-rm-gap .rm-gap-media{display:flex;flex-direction:column;gap:.7em;min-height:0;min-width:0;justify-content:center}
+.v3-rm-gap .rm-video{position:relative;flex:0 0 36%;min-height:0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04)}
+.v3-rm-gap .rm-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.v3-rm-gap .gap-chart{flex:1;min-height:0;display:flex;flex-direction:column;gap:.45em}
+.v3-rm-gap .gap-chart-frame{position:relative;border-radius:14px;overflow:hidden;padding:.45em;
+  background:radial-gradient(90% 70% at 100% 0%, rgba(47,107,255,.22), transparent 55%),linear-gradient(180deg,#12172f,#080b18);
+  border:1px solid rgba(169,194,255,.22);box-shadow:0 1em 2.2em rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04)}
+.v3-rm-gap .gap-chart-frame img{display:block;width:100%;height:auto;max-height:100%;object-fit:contain;border-radius:8px;background:#fff}
+.v3-rm-gap .gap-chart-meta{display:flex;align-items:center;justify-content:space-between;gap:.8em}
+.v3-rm-gap .gap-chart-pill{font-size:.34em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#c7d2ff;border:1px solid rgba(169,194,255,.35);background:rgba(169,194,255,.1);border-radius:999px;padding:.5em .85em;white-space:nowrap}
+.v3-rm-gap .gap-chart-foot{font-size:.3em;line-height:1.35;color:rgba(255,255,255,.42)}
+
+/* retail media intro (legacy) */
 
 /* ─── v3 layout helpers ─── */
 .v3-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:8%;z-index:3;box-sizing:border-box}
@@ -469,6 +527,44 @@ section.present .agenda-rows .row:nth-child(4){animation-delay:.6s}
 .v3-who .photo.who-hero{background-image:url('assets/Final%20Assets/2.jpg');background-repeat:no-repeat;background-size:cover;background-position:40% center}
 .v3-who h2{font-size:1.7em}
 .v3-who .one-line{font-size:.72em;line-height:1.5;color:rgba(255,255,255,.82);margin-top:1em;max-width:22em}
+
+/* who we are + closed loop (merged slide 7) */
+.v3-who-closed .who-closed-layout{position:absolute;inset:0;z-index:3;display:grid;grid-template-columns:1.05fr .95fr;gap:1.15em;padding:4% 4.5% 6.5% 5%;box-sizing:border-box;min-height:0}
+.v3-who-closed .who-closed-copy{display:flex;flex-direction:column;justify-content:center;min-width:0;min-height:0;overflow:hidden}
+.v3-who-closed .who-block .kick{margin-bottom:.35em}
+.v3-who-closed .who-block h2{font-size:1.32em;margin:0;max-width:11em;line-height:1.05}
+.v3-who-closed .who-block .one-line{font-size:.56em;line-height:1.4;color:rgba(255,255,255,.82);margin-top:.4em;max-width:19em}
+.v3-who-closed .who-divider{height:1px;background:rgba(255,255,255,.12);margin:.6em 0 .5em;max-width:16em}
+.v3-who-closed .closed-block .kick{margin-bottom:.28em}
+.v3-who-closed .closed-block h1{font-size:1.05em;max-width:11em;margin:0;line-height:1.08}
+.v3-who-closed .closed-block .one-line{font-size:.5em;color:rgba(255,255,255,.82);margin:.32em 0 0;max-width:19em;line-height:1.35}
+.v3-who-closed .flowchain{margin-top:.45em;display:flex;flex-direction:column;gap:.38em;max-width:100%;width:100%}
+.v3-who-closed .flowrow{display:flex;align-items:stretch;gap:.24em;width:100%}
+.v3-who-closed .flowstep{flex:1;display:flex;flex-direction:column;justify-content:center;gap:.18em;padding:.48em .45em;border-radius:10px;border:1.5px solid rgba(169,194,255,.32);background:rgba(255,255,255,.06);min-width:0;opacity:0;transform:translateY(10px)}
+.v3-who-closed .flowarrow{flex:none;align-self:center;font-size:.9em;font-weight:700;color:#a9c2ff;line-height:1;padding:0 .02em}
+.v3-who-closed .flowhub{display:flex;align-items:center;justify-content:center;gap:.3em;margin-top:.22em;padding:.48em .55em;border-radius:10px;border:1.5px solid rgba(169,194,255,.55);background:linear-gradient(90deg,rgba(24,62,246,.28),rgba(169,194,255,.12));opacity:0;transform:translateY(10px)}
+.v3-who-closed .flowhub-label{font-family:'Space Grotesk','Inter',sans-serif;font-size:.78em;font-weight:700;letter-spacing:-.02em;color:#fff;line-height:1.1}
+.v3-who-closed .flowhub-eq{color:#a9c2ff;margin-right:.12em}
+.v3-who-closed .flow-num{font-size:.38em;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a9c2ff;line-height:1}
+.v3-who-closed .flow-label{font-family:'Space Grotesk','Inter',sans-serif;font-size:.68em;font-weight:700;letter-spacing:-.02em;color:#fff;line-height:1.08}
+.v3-who-closed .accent-line{font-size:.48em;color:#a9c2ff;font-weight:700;margin-top:.42em;line-height:1.35;max-width:18em}
+section.present.v3-who-closed .flowstep,
+section.present.v3-who-closed .flowhub{animation:pcardIn .5s ease forwards}
+section.present.v3-who-closed .flowrow:nth-child(1) .flowstep:nth-child(1){animation-delay:.08s}
+section.present.v3-who-closed .flowrow:nth-child(1) .flowstep:nth-child(3){animation-delay:.18s}
+section.present.v3-who-closed .flowrow:nth-child(1) .flowstep:nth-child(5){animation-delay:.28s}
+section.present.v3-who-closed .flowrow:nth-child(2) .flowstep:nth-child(1){animation-delay:.38s}
+section.present.v3-who-closed .flowrow:nth-child(2) .flowstep:nth-child(3){animation-delay:.48s}
+section.present.v3-who-closed .flowrow:nth-child(2) .flowstep:nth-child(5){animation-delay:.58s}
+section.present.v3-who-closed .flowhub{animation-delay:.7s}
+.v3-who-closed .who-closed-media{display:grid;grid-template-rows:.9fr 1.1fr;gap:.6em;min-height:0}
+.v3-who-closed .who-photo{position:relative;min-height:0;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);box-shadow:0 .8em 2em rgba(0,0,0,.28)}
+.v3-who-closed .who-photo .photo{inset:0;background-image:url('assets/Final%20Assets/2.jpg');background-repeat:no-repeat;background-size:cover;background-position:40% center}
+.v3-who-closed .who-photo::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(7,10,26,.35),transparent 32%)}
+.v3-who-closed .closed-video{position:relative;min-height:0;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);box-shadow:0 1em 2.4em rgba(0,0,0,.32)}
+.v3-who-closed .closed-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.v3-who-closed .closed-video::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(7,10,26,.35),transparent 28%)}
+
 .v3-gap .wrap{flex-direction:row;align-items:stretch;min-height:0}
 .v3-gap .gap-head{flex:0 0 42%;padding:5.5% 2% 8% 6%;display:flex;flex-direction:column;justify-content:center;box-sizing:border-box}
 .v3-gap .gap-head h1{font-size:1.75em;max-width:9em}
@@ -490,14 +586,27 @@ section.present .agenda-rows .row:nth-child(4){animation-delay:.6s}
 .v3-outcomes .outcomes-layout{position:absolute;inset:0;z-index:3;display:grid;grid-template-columns:1.15fr .95fr;gap:1.2em;padding:4.5% 5% 7% 6%;box-sizing:border-box;min-height:0}
 .v3-outcomes .outcomes-main{display:flex;flex-direction:column;min-width:0;min-height:0}
 .v3-outcomes .outcomes-main .kick{margin-bottom:.55em}
-.v3-outcomes .outcomes-main h1{font-size:1.55em;max-width:14em;margin:0 0 1em}
-.v3-outcomes .outcomes-grid{flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:.9em;min-height:0}
-.v3-outcomes .outcomes-grid .pcard{padding:1.35em 1.3em 1.4em;display:flex;flex-direction:column;justify-content:center;border-radius:16px}
+.v3-outcomes .outcomes-main h1{font-size:1.42em;max-width:15em;margin:0 0 .85em;line-height:1.08}
+.v3-outcomes .outcomes-main h1 .accent{color:#a9c2ff}
+.v3-outcomes .outcomes-grid{flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:.85em;min-height:0}
+.v3-outcomes .outcomes-grid .pcard{padding:1.25em 1.2em 1.3em;display:flex;flex-direction:column;justify-content:center;border-radius:16px;min-height:0;
+  opacity:1!important;transform:none!important;animation:none!important;
+  background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.14);transition:background .35s ease,border-color .35s ease,box-shadow .35s ease}
+.v3-outcomes .outcomes-grid .outcome-body{display:flex;flex-direction:column;justify-content:center;min-height:100%;opacity:0;visibility:hidden;transform:translateY(10px)}
+.v3-outcomes .outcomes-grid .outcome-body.visible{opacity:1;visibility:visible;transform:none;transition:opacity .45s ease,transform .45s ease}
+.v3-outcomes .outcomes-grid .pcard:has(.outcome-body.visible){background:rgba(255,255,255,.06);border:1px solid rgba(169,194,255,.28);
+  box-shadow:0 0 0 1px rgba(169,194,255,.08),0 .8em 1.8em rgba(0,0,0,.28)}
+.v3-outcomes .outcomes-grid .pcard:has(.outcome-body.visible) .plabel{color:#c7d2ff}
 .v3-outcomes .outcomes-grid .plabel{font-size:.58em;margin:0 0 .55em;letter-spacing:.12em}
 .v3-outcomes .outcomes-grid .pdesc{font-size:.58em;line-height:1.45;color:rgba(255,255,255,.84)}
+.v3-outcomes .outcomes-steps{display:flex;gap:.45em;margin-bottom:.75em}
+.v3-outcomes .outcome-step{flex:none;width:1.65em;height:1.65em;border-radius:999px;border:1.5px solid rgba(169,194,255,.28);
+  display:flex;align-items:center;justify-content:center;font-size:.42em;font-weight:700;color:rgba(255,255,255,.35);transition:all .35s ease}
+.v3-outcomes .outcome-step.on{border-color:rgba(123,245,176,.55);color:#7bf5b0;background:rgba(123,245,176,.1);box-shadow:0 0 12px rgba(123,245,176,.18)}
 .v3-outcomes .outcomes-media{position:relative;min-height:0;display:grid;grid-template-rows:1fr 1fr;gap:.65em}
 .v3-outcomes .outcomes-shot{position:relative;min-height:0;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.14);
-  background:rgba(255,255,255,.04);box-shadow:0 1em 2.2em rgba(0,0,0,.3)}
+  background:rgba(255,255,255,.04);box-shadow:0 1em 2.2em rgba(0,0,0,.3);opacity:.55;filter:saturate(.85);transition:opacity .45s ease,border-color .45s ease,filter .45s ease,box-shadow .45s ease}
+.v3-outcomes .outcomes-shot.lit{opacity:1;filter:none;border-color:rgba(169,194,255,.28);box-shadow:0 0 0 1px rgba(169,194,255,.1),0 1em 2.2em rgba(0,0,0,.35)}
 .v3-outcomes .outcomes-shot .photo{inset:0;background-image:url('assets/costa-matcha-activation.png');background-size:cover}
 .v3-outcomes .outcomes-shot.machine .photo{background-size:185% auto;background-position:8% 42%}
 .v3-outcomes .outcomes-shot.merch .photo{background-position:88% center}
@@ -511,9 +620,9 @@ section.present .agenda-rows .row:nth-child(4){animation-delay:.6s}
 .v3-guest .col-img{flex:1;min-width:0}
 .v3-guest .kick{margin-bottom:.35em}
 .v3-guest h1{font-size:1.28em;max-width:12em;line-height:1.05}
-.v3-guest .one-line{font-size:.58em;line-height:1.35;color:rgba(255,255,255,.82);margin-top:.45em;max-width:22em}
-.v3-guest .guest-list{margin-top:.65em;display:flex;flex-direction:column;gap:.4em}
-.v3-guest .guest-item{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);border-radius:12px;padding:.62em .85em}
+.v3-guest .one-line{font-size:.58em;line-height:1.35;color:rgba(255,255,255,.82);margin-top:.45em;max-width:22em;flex:none}
+.v3-guest .guest-list{flex:1;margin-top:.7em;display:flex;flex-direction:column;justify-content:space-between;gap:.85em;min-height:0}
+.v3-guest .guest-item{flex:1;display:flex;flex-direction:column;justify-content:center;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);border-radius:12px;padding:.78em .95em;min-height:0}
 .v3-guest .guest-item .gt{font-family:'Space Grotesk','Inter',sans-serif;font-size:.78em;font-weight:700;color:#fff;letter-spacing:-.02em;line-height:1.15;margin:0 0 .22em}
 .v3-guest .guest-item .gd{font-size:.42em;color:rgba(255,255,255,.75);line-height:1.3;margin:0}
 .v3-guest .photo.guest-hero{background-image:url('assets/guest-sku-qr.png');background-repeat:no-repeat;background-size:cover;background-position:center center}
@@ -676,7 +785,7 @@ section.present .abcard.win{animation:abPulse 2.4s ease-in-out infinite}
   <div class="cover-inner">
     <div class="kick" style="color:#c7d2ff">Agency partner programme</div>
     <h1>Connected Retail</h1>
-    <p class="cover-sub"><span class="accent">Connecting brands to consumers where decisions become purchases.</span></p>
+    <p class="cover-sub"><span class="accent">Where retail media meets the real world</span></p>
   </div>
 </section>
 
@@ -746,7 +855,54 @@ section.present .abcard.win{animation:abPulse 2.4s ease-in-out infinite}
   <div class="pageft">Bright.Blue · Connected retail introduction</div>
 </section>
 
-<!-- ══════ 4 · EXPERIENTIAL AND EVENTS ══════ -->
+<!-- ══════ 4 · NUTS AND BOLTS ══════ -->
+<section class="v3-nuts">
+  <div class="washdark"></div>
+  <div class="wrap">
+    <div class="col-text pad">
+      <div class="kick">Connected retail</div>
+      <h1>The nuts and bolts.</h1>
+      <p class="one-line">Behind the screen: supply routes, guest SKUs and live data on every vend.</p>
+      <div class="nuts-block">
+        <div class="nuts-label">Getting product to store</div>
+        <div class="nuts-grid">
+          <div class="nuts-item">
+            <p class="nt">Wholesalers</p>
+            <p class="nd">Direct supply across the connected estate.</p>
+          </div>
+          <div class="nuts-item">
+            <p class="nt">Vending groups</p>
+            <p class="nd">National operator and refill networks.</p>
+          </div>
+          <div class="nuts-item">
+            <p class="nt">Routes</p>
+            <p class="nd">Logistics that keep machines stocked.</p>
+          </div>
+        </div>
+      </div>
+      <div class="nuts-block">
+        <div class="nuts-label">Non-physical products</div>
+        <div class="nuts-grid duo">
+          <div class="nuts-item">
+            <p class="nt">Guest SKUs</p>
+            <p class="nd">Trial and partner products not permanently on the machine.</p>
+          </div>
+          <div class="nuts-item">
+            <p class="nt">Digital fulfilment</p>
+            <p class="nd">QR checkout, delivery, subscriptions and sign-up.</p>
+          </div>
+        </div>
+      </div>
+      <p class="nuts-accent">Live reporting on every single vend.</p>
+    </div>
+    <div class="col-img">
+      <div class="photo fade-l no-vfade nuts-hero" role="img" aria-label="Customer using QR checkout on a connected retail machine"></div>
+    </div>
+  </div>
+  <div class="pageft">Bright.Blue · Connected retail introduction</div>
+</section>
+
+<!-- ══════ 5 · EXPERIENTIAL AND EVENTS ══════ -->
 <section class="v3-events" data-events-slide>
   <div class="washdark"></div>
   <div class="events-layout">
@@ -787,35 +943,26 @@ section.present .abcard.win{animation:abPulse 2.4s ease-in-out infinite}
   <div class="pageft">Bright.Blue · Connected retail introduction</div>
 </section>
 
-<!-- ══════ 5 · RETAIL MEDIA INTRO ══════ -->
-<section class="v3-rm" data-rm-slide>
+<!-- ══════ 5 · RETAIL MEDIA + THE GAP ══════ -->
+<section class="v3-rm-gap" data-rm-slide>
   <div class="washdark"></div>
-  <div class="rm-layout">
-    <div class="rm-copy">
+  <div class="rm-gap-layout">
+    <div class="rm-gap-copy">
       <div class="kick">Retail media</div>
       <p class="rm-quote">The future of retail media isn't just online.</p>
       <p class="rm-quote">It's <span class="hl">Connected Retail</span>.</p>
       <p class="rm-quote sub">Where brands can reach shoppers at the point of purchase, with the same data, measurement and accountability they've come to expect from digital.</p>
-    </div>
-    <div class="rm-video">
-      <video muted loop playsinline preload="metadata" aria-label="Bright.Blue showcase">
-        <source src="assets/bright-blue-showcase.mp4" type="video/mp4"/>
-      </video>
-    </div>
-  </div>
-  <div class="pageft">Bright.Blue · Connected retail introduction</div>
-</section>
-
-<!-- ══════ 6 · THE GAP ══════ -->
-<section class="gap-slide v3-gap">
-  <div class="washdark"></div>
-  <div class="wrap">
-    <div class="gap-head">
+      <div class="rm-gap-divider"></div>
       <div class="kick">The gap</div>
       <h1>Clickstream media for the store.</h1>
       <p class="one-line">Less than 1% of retail media reaches the physical store, where most purchases happen.</p>
     </div>
-    <div class="ph-chart-wrap">
+    <div class="rm-gap-media">
+      <div class="rm-video">
+        <video muted loop playsinline preload="metadata" aria-label="Bright.Blue showcase">
+          <source src="assets/bright-blue-showcase.mp4" type="video/mp4"/>
+        </video>
+      </div>
       <div class="gap-chart">
         <div class="gap-chart-frame">
           <img src="assets/emarketer-instore-chart.png" alt="eMarketer: US in-store retail media spend will top $1 billion but not reach 1% of total retail media by 2028"/>
@@ -830,26 +977,35 @@ section.present .abcard.win{animation:abPulse 2.4s ease-in-out infinite}
   <div class="pageft">Bright.Blue · Connected retail introduction</div>
 </section>
 
-<!-- ══════ 7 · THE AGENCY PROBLEM ══════ -->
-<section>
+<!-- ══════ 6 · THE AGENCY PROBLEM ══════ -->
+<section class="v3-agency">
   <div class="wash"></div>
   <div class="wrap"><div class="col-text pad">
     <div class="kick divider" style="color:#c7d2ff">The agency problem</div>
     <h1 style="font-size:1.85em;max-width:90%">Getting a product in front of the customer is slow, fleeting, and unmeasured.</h1>
     <div class="problemgrid">
       <div class="pcard">
-        <div class="pnum">12-16 months</div>
+        <div class="pnum-reveal">
+          <span class="pnum pnum-old">12-16 months</span>
+          <span class="pnum pnum-new fragment fade-up">2 weeks</span>
+        </div>
         <div class="plabel">Speed to shelf</div>
         <p class="pdesc">Traditional retail: 12 to 16 months from first pitch to live on shelf.</p>
       </div>
       <div class="pcard">
-        <div class="pnum">Up to 42%</div>
+        <div class="pnum-reveal">
+          <span class="pnum pnum-old">Up to 42%</span>
+          <span class="pnum pnum-new fragment fade-up">No decay</span>
+        </div>
         <div class="plabel">Intent decay</div>
         <p class="pdesc">Purchase intent decays by up to 42% between exposure and purchase.</p>
         <p class="pcite-inline">Source: Thinkbox, Staying Power.</p>
       </div>
       <div class="pcard">
-        <div class="pnum" style="white-space:nowrap;font-size:1.15em">No attribution</div>
+        <div class="pnum-reveal">
+          <span class="pnum pnum-old">No attribution</span>
+          <span class="pnum pnum-new fragment fade-up">Live attribution</span>
+        </div>
         <div class="plabel">Proof of sale</div>
         <p class="pdesc">In-store digital media can't be tied back to a real transaction.</p>
       </div>
@@ -859,63 +1015,99 @@ section.present .abcard.win{animation:abPulse 2.4s ease-in-out infinite}
   <div class="pageft">Bright.Blue · Connected retail introduction</div>
 </section>
 
-<!-- ══════ 5 · THE TURN ══════ -->
-<section>
-  <div class="wash"></div>
-  <div class="wrap"><div class="col-text pad" style="justify-content:center">
-    <div class="kick divider" style="color:#c7d2ff">The shift</div>
-    <h1 class="strikewrap" style="font-size:1.5em;line-height:1.2;max-width:100%">
-      <span class="strikeline"><span class="strikeold">Physical retail takes 16 months from plan to retail sales.</span></span>
-      <span class="strikenew"><span class="hl">In 2 weeks.</span></span>
-    </h1>
-  </div></div>
-  <div class="pageft">Bright.Blue · Connected retail introduction</div>
-</section>
-
-<!-- ══════ 6 · WHO WE ARE ══════ -->
-<section class="v3-who">
+<!-- ══════ 7 · WHO WE ARE + CLOSED LOOP ══════ -->
+<section class="v3-who-closed" data-closed-slide>
   <div class="washdark"></div>
-  <div class="wrap">
-    <div class="col-text pad">
-      <div class="kick">Bright.Blue</div>
-      <h2>Screen, shelf, and point of sale.</h2>
-      <p class="one-line">800+ connected retail devices across premium UK gyms, airports, rail and universities. Growing monthly.</p>
+  <div class="who-closed-layout">
+    <div class="who-closed-copy">
+      <div class="who-block">
+        <div class="kick">Bright.Blue</div>
+        <h2>Screen, shelf, and point of sale.</h2>
+        <p class="one-line">800+ connected retail devices across premium UK gyms, airports, rail and universities. Growing monthly.</p>
+      </div>
+      <div class="who-divider"></div>
+      <div class="closed-block">
+        <div class="kick">Closed-loop retail media</div>
+        <h1>The ad and the till are the same unit.</h1>
+        <p class="one-line">Exposure and sale on the same device. No panel, no modelling.</p>
+        <div class="flowchain" aria-label="Connected Retail attribution flow">
+          <div class="flowrow">
+            <div class="flowstep"><span class="flow-num">01</span><span class="flow-label">Media exposure</span></div>
+            <div class="flowarrow">→</div>
+            <div class="flowstep"><span class="flow-num">02</span><span class="flow-label">Engagement</span></div>
+            <div class="flowarrow">→</div>
+            <div class="flowstep"><span class="flow-num">03</span><span class="flow-label">Purchase</span></div>
+          </div>
+          <div class="flowrow">
+            <div class="flowstep"><span class="flow-num">04</span><span class="flow-label">Transaction data</span></div>
+            <div class="flowarrow">→</div>
+            <div class="flowstep"><span class="flow-num">05</span><span class="flow-label">Attribution</span></div>
+            <div class="flowarrow">→</div>
+            <div class="flowstep"><span class="flow-num">06</span><span class="flow-label">Optimisation</span></div>
+          </div>
+          <div class="flowhub">
+            <span class="flowhub-label"><span class="flowhub-eq">=</span> Connected Retail</span>
+          </div>
+        </div>
+        <p class="accent-line">Turn on physical retail like you turn on ads.</p>
+      </div>
     </div>
-    <div class="col-img">
-      <div class="photo fade-l no-vfade who-hero" role="img" aria-label="Connected retail machine in venue"></div>
+    <div class="who-closed-media">
+      <div class="who-photo">
+        <div class="photo fade-l no-vfade" role="img" aria-label="Connected retail machine in venue"></div>
+      </div>
+      <div class="closed-video">
+        <video muted loop playsinline preload="metadata" aria-label="Bright.Blue Callisto office demo">
+          <source src="assets/callisto-office-demo.mp4" type="video/mp4"/>
+        </video>
+      </div>
     </div>
   </div>
   <div class="pageft">Bright.Blue · Connected retail introduction</div>
 </section>
 
-<!-- ══════ 10 · WHAT WE DO ══════ -->
-<section class="v3-outcomes">
+<!-- ══════ 8 · FOUR OUTCOMES ══════ -->
+<section class="v3-outcomes" data-outcomes-slide>
   <div class="washdark"></div>
   <div class="outcomes-layout">
     <div class="outcomes-main">
-      <div class="kick">One connected estate</div>
-      <h1>One plan. Four outcomes for your client.</h1>
+      <div class="kick">Four outcomes</div>
+      <h1>One Plan, <span class="accent">One Machine</span>,<br/>Four Outcomes for your Client</h1>
+      <div class="outcomes-steps" aria-hidden="true">
+        <span class="outcome-step" data-outcome-step="1">1</span>
+        <span class="outcome-step" data-outcome-step="2">2</span>
+        <span class="outcome-step" data-outcome-step="3">3</span>
+        <span class="outcome-step" data-outcome-step="4">4</span>
+      </div>
       <div class="problemgrid outcomes-grid">
-        <div class="pcard">
-          <div class="plabel">Sales</div>
-          <p class="pdesc">Physical product plus e-commerce. Real transactions.</p>
+        <div class="pcard" data-outcome="1">
+          <div class="outcome-body fragment fade-up">
+            <div class="plabel">Sales</div>
+            <p class="pdesc">Physical product plus e-commerce. Real transactions.</p>
+          </div>
         </div>
-        <div class="pcard">
-          <div class="plabel">Media</div>
-          <p class="pdesc">Closed-loop in-store media and DOOH, attributed to the till.</p>
+        <div class="pcard" data-outcome="2">
+          <div class="outcome-body fragment fade-up">
+            <div class="plabel">Media</div>
+            <p class="pdesc">Closed-loop in-store media and DOOH, attributed to the till.</p>
+          </div>
         </div>
-        <div class="pcard">
-          <div class="plabel">Data</div>
-          <p class="pdesc">Live by SKU, venue and daypart. Insight grocers won't share.</p>
+        <div class="pcard" data-outcome="3">
+          <div class="outcome-body fragment fade-up">
+            <div class="plabel">Data</div>
+            <p class="pdesc">Live by SKU, venue and daypart. Insight grocers won't share.</p>
+          </div>
         </div>
-        <div class="pcard">
-          <div class="plabel">New customers</div>
-          <p class="pdesc">Sampling, sign-ups, QR journeys, direct relationships.</p>
+        <div class="pcard" data-outcome="4">
+          <div class="outcome-body fragment fade-up">
+            <div class="plabel">New customers</div>
+            <p class="pdesc">Sampling, sign-ups, QR journeys, direct relationships.</p>
+          </div>
         </div>
       </div>
     </div>
     <div class="outcomes-media">
-      <div class="outcomes-shot machine">
+      <div class="outcomes-shot machine lit">
         <div class="photo" role="img" aria-label="Costa activation machine"></div>
         <div class="cap">The machine</div>
       </div>
@@ -953,44 +1145,6 @@ section.present .abcard.win{animation:abPulse 2.4s ease-in-out infinite}
     </div>
     <div class="col-img">
       <div class="photo fade-l no-vfade guest-hero" role="img" aria-label="Customer scanning QR code on a connected retail machine for digital guest SKU checkout"></div>
-    </div>
-  </div>
-  <div class="pageft">Bright.Blue · Connected retail introduction</div>
-</section>
-
-<!-- ══════ 11 · CLOSED LOOP ══════ -->
-<section class="v3-closed" data-closed-slide>
-  <div class="washdark"></div>
-  <div class="closed-layout">
-    <div class="closed-copy">
-      <div class="kick">Closed-loop retail media</div>
-      <h1>The ad and the till are the same unit.</h1>
-      <p class="one-line">Exposure and sale on the same device. No panel, no modelling.</p>
-      <div class="flowchain" aria-label="Connected Retail attribution flow">
-        <div class="flowrow">
-          <div class="flowstep"><span class="flow-num">01</span><span class="flow-label">Media exposure</span></div>
-          <div class="flowarrow">→</div>
-          <div class="flowstep"><span class="flow-num">02</span><span class="flow-label">Engagement</span></div>
-          <div class="flowarrow">→</div>
-          <div class="flowstep"><span class="flow-num">03</span><span class="flow-label">Purchase</span></div>
-        </div>
-        <div class="flowrow">
-          <div class="flowstep"><span class="flow-num">04</span><span class="flow-label">Transaction data</span></div>
-          <div class="flowarrow">→</div>
-          <div class="flowstep"><span class="flow-num">05</span><span class="flow-label">Attribution</span></div>
-          <div class="flowarrow">→</div>
-          <div class="flowstep"><span class="flow-num">06</span><span class="flow-label">Optimisation</span></div>
-        </div>
-        <div class="flowhub">
-          <span class="flowhub-label"><span class="flowhub-eq">=</span> Connected Retail</span>
-        </div>
-      </div>
-      <p class="accent-line">Turn on physical retail like you turn on ads.</p>
-    </div>
-    <div class="closed-video">
-      <video muted loop playsinline preload="metadata" aria-label="Bright.Blue Callisto office demo">
-        <source src="assets/callisto-office-demo.mp4" type="video/mp4"/>
-      </video>
     </div>
   </div>
   <div class="pageft">Bright.Blue · Connected retail introduction</div>
@@ -1414,20 +1568,21 @@ section.present .abcard.win{animation:abPulse 2.4s ease-in-out infinite}
   <div class="pageft">Bright.Blue · Connected retail introduction</div>
 </section>
 
-<!-- ══════ 15 · CLOSE ══════ -->
-<section>
+<!-- ══════ CLOSE ══════ -->
+<section class="v3-close">
   <div class="washdark"></div>
   <img class="logo" src="assets/bb-logo-white.svg" alt="Bright.Blue"/>
-  <div class="cta">
-    <div class="kick">Let's talk</div>
-    <h1>Digital changed advertising<br/>by making it measurable.</h1>
-    <p class="lead" style="color:#a9c2ff;font-weight:600">We're doing the same for physical retail.</p>
-    <p class="lead" style="margin-top:.9em">Measure what matters. Optimise what works. Reach consumers where purchase decisions happen.</p>
-    <div class="contactname">Adam Smith</div>
-    <div class="contactrow">
-      <div class="contact"><div class="cl">Email</div><div class="cv"><a href="mailto:adam.smith@bright.blue">adam.smith@bright.blue</a></div></div>
-      <div class="contact"><div class="cl">Phone</div><div class="cv"><a href="tel:+447714492134">+44 7714 492134</a></div></div>
-      <div class="contact"><div class="cl">Web</div><div class="cv">Bright.Blue</div></div>
+  <div class="close-layout">
+    <div class="close-copy">
+      <div class="kick">Let's talk</div>
+      <h1>We're delivering <span class="accent">clickstream media</span> for the store.</h1>
+      <p class="close-sub">Digital transformed advertising through measurement.</p>
+      <div class="contactname">Adam Smith</div>
+      <div class="contactrow">
+        <div class="contact"><div class="cl">Email</div><div class="cv"><a href="mailto:adam.smith@bright.blue">adam.smith@bright.blue</a></div></div>
+        <div class="contact"><div class="cl">Phone</div><div class="cv"><a href="tel:+447714492134">+44 7714 492134</a></div></div>
+        <div class="contact"><div class="cl">Web</div><div class="cv">Bright.Blue</div></div>
+      </div>
     </div>
   </div>
   <div class="pageft">Bright.Blue · Connected retail introduction</div>
@@ -1461,6 +1616,40 @@ Reveal.initialize({hash:true,slideNumber:'c/t',width:1512,height:945,margin:0,ce
   }
   Reveal.on('ready', sync);
   Reveal.on('slidechanged', sync);
+})();
+
+/* ─── four outcomes clickthrough ─── */
+(function(){
+  var slide = document.querySelector('[data-outcomes-slide]');
+  if(!slide) return;
+  var steps = slide.querySelectorAll('[data-outcome-step]');
+  var cards = slide.querySelectorAll('[data-outcome]');
+  var merch = slide.querySelector('.outcomes-shot.merch');
+
+  function sync(){
+    var count = 0;
+    cards.forEach(function(card){
+      var body = card.querySelector('.outcome-body');
+      if(body && body.classList.contains('visible')) count++;
+    });
+    steps.forEach(function(step, i){
+      step.classList.toggle('on', i < count);
+    });
+    if(merch) merch.classList.toggle('lit', count >= 2);
+  }
+
+  Reveal.on('ready', function(){
+    if(Reveal.getCurrentSlide() === slide) sync();
+  });
+  Reveal.on('slidechanged', function(e){
+    if(e.currentSlide === slide || e.previousSlide === slide) sync();
+  });
+  Reveal.on('fragmentshown', function(e){
+    if(e.slide === slide) sync();
+  });
+  Reveal.on('fragmenthidden', function(e){
+    if(e.slide === slide) sync();
+  });
 })();
 
 /* ─── live report animation ─── */
