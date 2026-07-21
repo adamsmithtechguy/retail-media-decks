@@ -3,3 +3,4 @@
 .obsidian/
 Thumbs.db
 *.mp4
+!assets/**/*.mp4
