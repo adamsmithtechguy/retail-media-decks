@@ -8,7 +8,6 @@
   <meta property="og:title" content="Bright.Blue · David Lloyd Connected Retail" />
   <meta property="og:description" content="Milton Keynes Club Connected Retail 3-Month Pilot" />
   <meta property="og:image" content="https://adamsmithtechguy.github.io/retail-media-decks/david-lloyd/slides/slide-01.jpg" />
-  <base href="/retail-media-decks/david-lloyd/" />
   <style>
     :root {
       --bg: #050519;
@@ -178,7 +177,8 @@
   <script>
     (function () {
       var TOTAL = 12;
-      var BASE = '/retail-media-decks/david-lloyd/slides/';
+      // Resolve against this page's folder so trailing-slash / local / GitHub Pages all work
+      var BASE = new URL('slides/', window.location.href.replace(/\/[^/]*$/, '/')).href;
       var img = document.getElementById('slide');
       var counter = document.getElementById('counter');
       var prevBtn = document.getElementById('prev');
