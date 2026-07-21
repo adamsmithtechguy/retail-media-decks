@@ -177,8 +177,11 @@
   <script>
     (function () {
       var TOTAL = 12;
-      // Resolve against this page's folder so trailing-slash / local / GitHub Pages all work
-      var BASE = new URL('slides/', window.location.href.replace(/\/[^/]*$/, '/')).href;
+      // Folder of this page — works with/without trailing slash or index.html
+      var dir = location.pathname;
+      if (/\.html?$/i.test(dir)) dir = dir.replace(/\/[^/]+$/, '/');
+      else if (dir.slice(-1) !== '/') dir += '/';
+      var BASE = location.origin + dir + 'slides/';
       var img = document.getElementById('slide');
       var counter = document.getElementById('counter');
       var prevBtn = document.getElementById('prev');
