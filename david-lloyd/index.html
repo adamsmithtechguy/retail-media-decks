@@ -2,220 +2,285 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Bright.Blue · David Lloyd Connected Retail</title>
   <meta name="description" content="Milton Keynes Club Connected Retail 3-Month Pilot — Visual Concept and Partnership Tiers." />
   <meta property="og:title" content="Bright.Blue · David Lloyd Connected Retail" />
   <meta property="og:description" content="Milton Keynes Club Connected Retail 3-Month Pilot" />
-  <meta property="og:image" content="slides/slide-01.jpg" />
+  <meta property="og:image" content="https://adamsmithtechguy.github.io/retail-media-decks/david-lloyd/slides/slide-01.jpg" />
+  <base href="/retail-media-decks/david-lloyd/" />
   <style>
     :root {
       --bg: #050519;
       --ink: #ffffff;
       --accent: #7ee8ff;
-      --muted: rgba(255, 255, 255, 0.55);
-      --panel: rgba(13, 13, 33, 0.72);
+      --muted: rgba(255, 255, 255, 0.6);
+      --panel: rgba(13, 13, 33, 0.92);
+      --line: rgba(126, 232, 255, 0.35);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
       height: 100%;
       background: var(--bg);
       color: var(--ink);
-      font-family: "DM Sans", "Nunito", Arial, Helvetica, sans-serif;
-      overflow: hidden;
+      font-family: Arial, Helvetica, sans-serif;
     }
-    .stage {
-      position: relative;
-      width: 100%;
-      height: 100%;
+    body {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      background:
-        radial-gradient(ellipse 60% 50% at 15% 20%, rgba(126, 232, 255, 0.08), transparent 55%),
-        radial-gradient(ellipse 50% 40% at 90% 80%, rgba(126, 232, 255, 0.05), transparent 50%),
-        var(--bg);
+      flex-direction: column;
+      min-height: 100%;
     }
-    .frame {
-      position: relative;
-      width: min(96vw, calc(96vh * 16 / 9));
-      aspect-ratio: 16 / 9;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
-      background: #0d0d21;
-    }
-    .frame img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      opacity: 0;
-      transition: opacity 280ms ease;
-      pointer-events: none;
-    }
-    .frame img.active { opacity: 1; }
-    .chrome {
-      position: absolute;
-      left: 0; right: 0; bottom: 0;
+    .top {
+      flex: 0 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      padding: 0.85rem 1.1rem;
-      background: linear-gradient(to top, rgba(5, 5, 25, 0.92), rgba(5, 5, 25, 0));
-      opacity: 0;
-      transform: translateY(6px);
-      transition: opacity 200ms ease, transform 200ms ease;
-      z-index: 5;
+      padding: 0.75rem 1rem;
+      background: rgba(5, 5, 25, 0.95);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      z-index: 10;
     }
-    .stage:hover .chrome,
-    .chrome:focus-within,
-    .chrome.show { opacity: 1; transform: translateY(0); }
     .brand {
-      font-size: 0.78rem;
-      letter-spacing: 0.04em;
+      font-size: 0.85rem;
       color: var(--muted);
-      white-space: nowrap;
     }
-    .brand strong { color: var(--accent); font-weight: 600; }
-    .controls { display: flex; align-items: center; gap: 0.55rem; }
+    .brand strong { color: var(--accent); font-weight: 700; }
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
     button {
       appearance: none;
-      border: 1px solid rgba(126, 232, 255, 0.28);
+      border: 1px solid var(--line);
       background: var(--panel);
       color: var(--ink);
       border-radius: 999px;
-      padding: 0.45rem 0.85rem;
+      padding: 0.55rem 1rem;
       font: inherit;
-      font-size: 0.78rem;
+      font-size: 0.85rem;
+      font-weight: 600;
       cursor: pointer;
-      transition: background 150ms ease, border-color 150ms ease;
+      min-width: 4.5rem;
     }
-    button:hover { background: rgba(126, 232, 255, 0.12); border-color: var(--accent); }
+    button:hover { border-color: var(--accent); background: rgba(126, 232, 255, 0.12); }
     button:disabled { opacity: 0.35; cursor: default; }
     .counter {
-      min-width: 3.5rem;
+      min-width: 4rem;
       text-align: center;
       font-variant-numeric: tabular-nums;
-      font-size: 0.78rem;
+      font-size: 0.85rem;
       color: var(--muted);
     }
+    .stage {
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem;
+      min-height: 0;
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .frame {
+      width: min(100%, calc((100vh - 5.5rem) * 16 / 9));
+      max-height: calc(100vh - 5.5rem);
+      aspect-ratio: 16 / 9;
+      background: #0d0d21;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      position: relative;
+    }
+    .frame img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #0d0d21;
+    }
+    .nav-hit {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 28%;
+      z-index: 2;
+      background: transparent;
+      border: 0;
+      min-width: 0;
+      border-radius: 0;
+      padding: 0;
+    }
+    .nav-hit:hover { background: rgba(126, 232, 255, 0.04); border: 0; }
+    .nav-hit.prev { left: 0; }
+    .nav-hit.next { right: 0; }
     .hint {
       position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 0.72rem;
+      left: 50%;
+      bottom: 1rem;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
       color: var(--muted);
       background: var(--panel);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 999px;
-      padding: 0.35rem 0.75rem;
-      z-index: 5;
-      opacity: 1;
-      transition: opacity 400ms ease;
+      padding: 0.4rem 0.85rem;
+      pointer-events: none;
+      z-index: 3;
+      transition: opacity 0.4s ease;
     }
-    .hint.hide { opacity: 0; pointer-events: none; }
-    @media (max-width: 720px) {
-      .hint { display: none; }
-      .brand { display: none; }
-      .frame { width: 100vw; height: auto; max-height: 100vh; border-radius: 0; }
-      .chrome { opacity: 1; transform: none; }
+    .hint.hide { opacity: 0; }
+    .error {
+      display: none;
+      position: absolute;
+      inset: 0;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      z-index: 4;
+      background: #0d0d21;
+    }
+    .error.show { display: flex; }
+    @media (max-width: 640px) {
+      .brand span { display: none; }
+      button { min-width: 3.75rem; padding: 0.5rem 0.75rem; }
+      .frame { border-radius: 0; width: 100%; max-height: none; height: auto; }
+      .stage { padding: 0; }
     }
   </style>
 </head>
 <body>
-  <div class="stage" id="stage">
-    <div class="hint" id="hint">← → to navigate · F for fullscreen</div>
-    <div class="frame" id="frame" aria-live="polite"></div>
-    <div class="chrome show" id="chrome">
-      <div class="brand"><strong>bright.blue</strong> · David Lloyd Connected Retail</div>
-      <div class="controls">
-        <button type="button" id="prev" aria-label="Previous slide">Prev</button>
-        <div class="counter" id="counter">1 / 12</div>
-        <button type="button" id="next" aria-label="Next slide">Next</button>
-        <button type="button" id="fs" aria-label="Fullscreen">Fullscreen</button>
-      </div>
+  <header class="top">
+    <div class="brand"><strong>bright.blue</strong> <span>· David Lloyd Connected Retail</span></div>
+    <div class="controls">
+      <button type="button" id="prev">Prev</button>
+      <div class="counter" id="counter">1 / 12</div>
+      <button type="button" id="next">Next</button>
+      <button type="button" id="fs">Full</button>
     </div>
-  </div>
+  </header>
+
+  <main class="stage" id="stage">
+    <div class="frame" id="frame">
+      <img id="slide" alt="Presentation slide" width="1440" height="810" />
+      <button type="button" class="nav-hit prev" id="hitPrev" aria-label="Previous slide"></button>
+      <button type="button" class="nav-hit next" id="hitNext" aria-label="Next slide"></button>
+      <div class="hint" id="hint">Tap sides or use Prev / Next</div>
+      <div class="error" id="error">Could not load slides. Check your connection and refresh.</div>
+    </div>
+  </main>
+
   <script>
-    const TOTAL = 12;
-    const frame = document.getElementById('frame');
-    const counter = document.getElementById('counter');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    const fsBtn = document.getElementById('fs');
-    const hint = document.getElementById('hint');
-    const chrome = document.getElementById('chrome');
+    (function () {
+      var TOTAL = 12;
+      var BASE = '/retail-media-decks/david-lloyd/slides/';
+      var img = document.getElementById('slide');
+      var counter = document.getElementById('counter');
+      var prevBtn = document.getElementById('prev');
+      var nextBtn = document.getElementById('next');
+      var hitPrev = document.getElementById('hitPrev');
+      var hitNext = document.getElementById('hitNext');
+      var fsBtn = document.getElementById('fs');
+      var hint = document.getElementById('hint');
+      var error = document.getElementById('error');
+      var index = 0;
 
-    const slides = [];
-    for (let i = 1; i <= TOTAL; i++) {
-      const img = document.createElement('img');
-      img.src = `slides/slide-${String(i).padStart(2, '0')}.jpg`;
-      img.alt = `Slide ${i}`;
-      img.decoding = 'async';
-      if (i === 1) img.loading = 'eager';
-      else img.loading = 'lazy';
-      frame.appendChild(img);
-      slides.push(img);
-    }
-
-    let index = Math.max(0, Math.min(TOTAL - 1, (parseInt(location.hash.replace('#', ''), 10) || 1) - 1));
-
-    function render() {
-      slides.forEach((img, i) => img.classList.toggle('active', i === index));
-      counter.textContent = `${index + 1} / ${TOTAL}`;
-      prevBtn.disabled = index === 0;
-      nextBtn.disabled = index === TOTAL - 1;
-      history.replaceState(null, '', `#${index + 1}`);
-    }
-
-    function go(delta) {
-      index = Math.max(0, Math.min(TOTAL - 1, index + delta));
-      render();
-      chrome.classList.add('show');
-    }
-
-    prevBtn.addEventListener('click', () => go(-1));
-    nextBtn.addEventListener('click', () => go(1));
-    fsBtn.addEventListener('click', () => {
-      if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
-      else document.exitFullscreen?.();
-    });
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
-        e.preventDefault(); go(1);
-      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-        e.preventDefault(); go(-1);
-      } else if (e.key === 'Home') {
-        e.preventDefault(); index = 0; render();
-      } else if (e.key === 'End') {
-        e.preventDefault(); index = TOTAL - 1; render();
-      } else if (e.key.toLowerCase() === 'f') {
-        e.preventDefault(); fsBtn.click();
+      function slideUrl(i) {
+        return BASE + 'slide-' + String(i + 1).padStart(2, '0') + '.jpg';
       }
-    });
 
-    let touchX = null;
-    frame.addEventListener('touchstart', (e) => { touchX = e.changedTouches[0].clientX; }, { passive: true });
-    frame.addEventListener('touchend', (e) => {
-      if (touchX == null) return;
-      const dx = e.changedTouches[0].clientX - touchX;
-      if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
-      touchX = null;
-    }, { passive: true });
+      function preload(i) {
+        if (i < 0 || i >= TOTAL) return;
+        var pre = new Image();
+        pre.src = slideUrl(i);
+      }
 
-    frame.addEventListener('click', (e) => {
-      const mid = frame.getBoundingClientRect().left + frame.clientWidth / 2;
-      go(e.clientX >= mid ? 1 : -1);
-    });
+      function render() {
+        error.classList.remove('show');
+        img.src = slideUrl(index);
+        img.alt = 'Slide ' + (index + 1) + ' of ' + TOTAL;
+        counter.textContent = (index + 1) + ' / ' + TOTAL;
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === TOTAL - 1;
+        hitPrev.disabled = index === 0;
+        hitNext.disabled = index === TOTAL - 1;
+        try {
+          history.replaceState(null, '', '#' + (index + 1));
+        } catch (e) {}
+        preload(index + 1);
+        preload(index - 1);
+      }
 
-    setTimeout(() => hint.classList.add('hide'), 3500);
-    setTimeout(() => chrome.classList.remove('show'), 3500);
+      function go(delta) {
+        var next = index + delta;
+        if (next < 0 || next >= TOTAL) return;
+        index = next;
+        render();
+      }
 
-    render();
+      img.addEventListener('error', function () {
+        error.classList.add('show');
+      });
+      img.addEventListener('load', function () {
+        error.classList.remove('show');
+      });
+
+      prevBtn.addEventListener('click', function (e) { e.stopPropagation(); go(-1); });
+      nextBtn.addEventListener('click', function (e) { e.stopPropagation(); go(1); });
+      hitPrev.addEventListener('click', function (e) { e.stopPropagation(); go(-1); });
+      hitNext.addEventListener('click', function (e) { e.stopPropagation(); go(1); });
+      fsBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
+        } else {
+          document.exitFullscreen && document.exitFullscreen();
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+          e.preventDefault();
+          go(1);
+        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+          e.preventDefault();
+          go(-1);
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          index = 0;
+          render();
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          index = TOTAL - 1;
+          render();
+        } else if (e.key.toLowerCase() === 'f') {
+          e.preventDefault();
+          fsBtn.click();
+        }
+      });
+
+      var touchX = null;
+      document.getElementById('frame').addEventListener('touchstart', function (e) {
+        touchX = e.changedTouches[0].clientX;
+      }, { passive: true });
+      document.getElementById('frame').addEventListener('touchend', function (e) {
+        if (touchX == null) return;
+        var dx = e.changedTouches[0].clientX - touchX;
+        if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+        touchX = null;
+      }, { passive: true });
+
+      var hash = parseInt((location.hash || '').replace('#', ''), 10);
+      if (hash >= 1 && hash <= TOTAL) index = hash - 1;
+
+      render();
+      setTimeout(function () { hint.classList.add('hide'); }, 4000);
+    })();
   </script>
 </body>
 </html>
